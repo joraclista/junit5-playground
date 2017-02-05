@@ -1,17 +1,19 @@
 package com.github.joraclista;
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 
 import static java.util.Arrays.asList;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Created by Alisa
  * version 1.0.
  */
+@RunWith(JUnitPlatform.class)
 @Slf4j
 public class AssertionsTest {
 
@@ -41,6 +43,7 @@ public class AssertionsTest {
     void testAssertEquals() {
         assertEquals(contact.getName(), "amy");
         assertEquals(contact.getSurname(), "black");
+        assertNotEquals(contact.getSurname(), "crazy");
     }
 
     @Test
@@ -64,5 +67,28 @@ public class AssertionsTest {
     @Test
     void testAssertTrue() {
         assertTrue(contact.getContacts().size() < 10, () -> "Contacts number should be less than 10");
+    }
+
+    @Test
+    void testNullAssertions() {
+        assertNull(Contact.builder()
+                .email("tommy.green@g-mail.com")
+                .name("tommy")
+                .surname("green")
+                .build().getContacts());
+        assertNotNull(contact.getSurname());
+
+    }
+
+    @Test
+    void testSameAssertions() {
+        assertSame("amy", "amy");
+        String tommyEmail = "tommy.green@g-mail.com";
+        assertNotSame(Contact.builder()
+                        .email(tommyEmail)
+                        .build(),
+                Contact.builder()
+                        .email(tommyEmail)
+                        .build());
     }
 }
