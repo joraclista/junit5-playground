@@ -13,6 +13,30 @@ This tutorial assumes you are comfortable with:
   * Intellij IDEA
   * Maven
   * Git
+  
+ ###  Dependencies
+Just add the following to your pom.xml:
+```xml 
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- To run tests on IDE such as Eclipse, Intellij -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-runner</artifactId>
+            <version>${junit.platform.version}</version>
+            <scope>test</scope>
+        </dependency>
+```
 
 ### Annotations
 Since JUnit 4, annotations have been a core of the testing framework.
@@ -53,3 +77,12 @@ All assertion methods listed below take an optional message parameter that displ
 |  assertNotNull(actual)	 | asserts *actual* is not null, fails otherwise	 |
 |  assertThrows(expectedExceptionClassType, Executable executable)	 | Asserts execution of the *executable* throws an exception of *expectedExceptionClassType* type and returns the exception. Fails otherwise	 |
 |  assertTimeout(timeout, executable)	 | Asserts execution of the supplied *executable*  completes before the given *timeout* is exceeded, fails otherwise	 |
+|  assertAll(heading, executables)	 | Asserts all supplied *executables* do not throw exceptions.	 |
+
+
+### Running tests with Maven
+Open a terminal window (Mac) or command prompt (Windows), 
+navigate to the directory where you cloned the repository, 
+and enter the following command:
+
+```mvn test```
