@@ -89,16 +89,14 @@ JUnit Jupiter provides several sources for parameters.
 With each of the sources, there is a tradeoff between ease-of-use and flexibility of allowed data types.
 This tutorial covers next sources:
 
-|    Annotation for source |	Description | Code sample |
-| ----- | ----- | ----- |
-| @ValueSource	 | provides access to an array of literal values of primitive types. Supported primitive types include *strings*, *ints*,*longs*, and *doubles*.  |	 |
-| @EnumSource	 | provides an enum that JUnit will supply—one at-a-time—to your @ParameterizedTest method.	 |	 |
-| @MethodSource	 | The name(s) of the test class method(s) to use as sources for arguments, must not be empty.	 |	 |
-| @CsvSource	 | 	The CSV lines to use as source of arguments, must not be empty |	 |
+|    Annotation for source |	Description | 
+| ----- | ----- |
+| @ValueSource	 | provides access to an array of literal values of primitive types. Supported primitive types include *strings*, *ints*,*longs*, and *doubles*.  |	
+| @EnumSource	 | provides an enum that JUnit will supply—one at-a-time—to your @ParameterizedTest method.	 |	
+| @MethodSource	 | The name(s) of the test class method(s) to use as sources for arguments, must not be empty.	 |
+| @CsvSource	 | 	The CSV lines to use as source of arguments, must not be empty |
 
  
-@ValueSource
-A @ValueSource is one where you specify a single array of literals that will be supplied—one at-a-time—to your @ParameterizedTest method.
 
 ### Running tests with Maven
 Open a terminal window (Mac) or command prompt (Windows), 
